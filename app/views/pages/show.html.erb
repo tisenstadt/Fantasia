@@ -1,2 +1,7 @@
 <% provide(:title, @page.page_title) %>
 <p><%=@page.content %></p>
+<ul>
+<% @page.choices.each do |choice| %>
+        <li> <%= choice.content %></li>
+<% end %>
+</ul>

@@ -1,0 +1,26 @@
+  <p><%= @page.content %></p>
+  
+  <% if @page.choices.count == 1 %>
+      <p>Now submit your second choice!</p>
+      <ul>
+          <% @page.choices.each do |choice| %>
+              <li><%= choice.content %></li>
+          <% end %>
+      </ul>
+  <% end %>
+  
+      <p>Submit your first choice!</p>
+
+  
+  <div class="row">
+      
+      <%= form_for(:choice, url: choices_path) do |f| %>
+              
+            <%= hidden_field_tag :page_id, @page.id %>
+            
+            <%= f.label :content %>
+            <%= f.text_field :content %>
+            
+            <%= f.submit "Submit my choice!", class: "btn btn-primary" %>
+     <% end %>
+  </div>

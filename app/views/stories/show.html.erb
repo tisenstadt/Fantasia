@@ -9,4 +9,5 @@
             <li><%= link_to page.page_title, page %></li>
         <% end %>
     </ul>
+    <%= link_to "Add new page", new_page_path( @story.id) %>
 <% end %>

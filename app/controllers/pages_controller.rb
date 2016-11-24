@@ -2,22 +2,22 @@ class PagesController < ApplicationController
     
 
   def new
-    @story = Story.find_by(params[:id])
+    @story = Story.find(params[:format])
     @page = Page.new
   end
   
   def show
-    @page = Page.find_by(params[:id])
+    @page = Page.find(params[:id])
   end
   
   def create
-    @story = Story.find_by(params[:page][:id])
+    @story = Story.find(params[:story_id])
     @page = @story.pages.build(page_params)
     if @page.save
       flash[:info] = "You've just submitted a page!" 
-      redirect_to stories_path
+      redirect_to add_choices_page_url(@page.id)
     else
-       render 'new'
+      render 'new'
     end
   end
   
@@ -25,6 +25,9 @@ class PagesController < ApplicationController
    
   end
   
+  def add_choices
+    @page = Page.find(params[:id])
+  end
   
   private
   
@@ -32,5 +35,6 @@ class PagesController < ApplicationController
     params.require(:page).permit(:page_title, :content)
   end
   
+
 
 end

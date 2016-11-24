@@ -1,0 +1,15 @@
+<h1>Welcome<%=@user.name %>!</h1>
+<div class="col-md-6 col-md-offset-3">
+<% if !@user.stories.empty? %>
+    <p>Below you will find your active stories. If the link is green, a contribution has been made and you can write a page! A red link means that you can visit the story, but you'll 
+    have to wait until someone else makes a contribution before you can write another page.</p>
+    <ul>
+        <% @user.stories.each do |story| %>
+            <li><%= link_to story.title, story %></li>
+        <% end %>
+    </ul>
+<% else %>
+    <p>It looks like you don't have any active stories! Visit the stories page to view available stories and make your very first contribution.</p>
+    <%= link_to stories_path %>
+<% end %>
+</div>
