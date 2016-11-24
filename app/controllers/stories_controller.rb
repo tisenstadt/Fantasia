@@ -3,11 +3,17 @@ class StoriesController < ApplicationController
     @story = Story.new
   end
   
+  def show
+    @story = Story.find_by(params[:id])
+  end
+  
   def create
     @story = Story.new(story_params)
     if @story.save
-      #Render a new page and redirect the user there.
-    else render 'new'
+      current_story @story
+      redirect_to new_page_path(title)
+    else 
+      render 'new'
     end
   end
   
