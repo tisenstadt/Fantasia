@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   
   def create
     @story = Story.find(params[:story_id])
-    @choice = Choice.find_by(params[:choice_id])
+    @choice = Choice.find_by(id: params[:choice_id])
     @page = @story.pages.build(page_params)
     if @page.save
       update_link_with_new_page(@choice, @page) if !@choice.nil?
