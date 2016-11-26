@@ -8,7 +8,9 @@
     <%= form_for(@page) do |f| %>
           
         <%= hidden_field_tag :story_id, @story.id %>
-        
+        <% unless @choice.nil? %>
+            <%= hidden_field_tag :choice_id, @choice.id %>
+        <% end %>
         <%= f.label :page_title %>
         <%= f.text_field :page_title %>
         

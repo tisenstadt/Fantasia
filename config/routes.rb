@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'links/create'
+
   get 'choices_controller/create'
 
   get 'users/show' => 'users#show'

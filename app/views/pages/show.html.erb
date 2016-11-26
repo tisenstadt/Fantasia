@@ -2,6 +2,12 @@
 <p><%=@page.content %></p>
 <ul>
 <% @page.choices.each do |choice| %>
-        <li> <%= choice.content %></li>
+    <li>
+        <% if choice.next_page.nil? %>
+            <%= link_to choice.content, new_page_path(:choice => choice.id, :story => choice.page.story_id) %>  
+        <% else %>
+            <%= link_to choice.content,  page_path(choice.next_page) %>
+        <% end %>    
+    </li>   
 <% end %>
 </ul>
