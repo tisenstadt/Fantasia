@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
-    
-
+   
+  before_action :authenticate_user!, only: [:new, :add_choices, :create]
+  
   def new
     @story = Story.find(params[:story])
     @choice = Choice.find_by(id: params[:choice])
@@ -37,6 +38,9 @@ class PagesController < ApplicationController
   def page_params
     params.require(:page).permit(:page_title, :content)
   end
+  
+ 
+    
   
 
 

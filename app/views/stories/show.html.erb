@@ -1,7 +1,7 @@
 <% provide(:title, "Pages") %>
 <p>Below you will find all the pages for this story! Click a page to access its content.</p>
 
-<% if @story.pages.empty? %>
+<% if @story.pages.empty? and user_signed_in? %>
     <%= link_to "Click to create the first page for this story!", new_page_path(:story => @story.id) %>
 <% else %>
     <ul class="row" >
@@ -9,5 +9,4 @@
             <li><%= link_to page.page_title, page %></li>
         <% end %>
     </ul>
-    <%= link_to "Add new page", new_page_path( :story => @story.id) %>
 <% end %>

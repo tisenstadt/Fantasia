@@ -1,4 +1,7 @@
 class StoriesController < ApplicationController
+  
+  before_action :authenticate_user!, only: [:new, :create]
+    
   def new
     @story = Story.new
   end
@@ -10,6 +13,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(story_params)
     if @story.save
+      current_user.link_story(@story)
       redirect_to new_page_path(:story => @story.id)
     else 
       render 'new'
