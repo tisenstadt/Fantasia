@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
-  get 'links/create'
-
-  get 'choices_controller/create'
-
-  get 'users/show' => 'users#show'
+ 
 
   root 'static_pages#home'
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :stories 
   resources :pages do
     member do
