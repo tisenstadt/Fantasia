@@ -35,6 +35,10 @@ module PagesHelper
         return html.html_safe
     
     end
+    
+    def get_page(word, story)
+        page = story.pages.find_by(page_title: word)
+    end
 
    
         

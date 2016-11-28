@@ -9,11 +9,21 @@
     <div class= "tree">
        <ul>
            <ul>
-               <%= generate_tree(root, html) %>
-         
+               <% tree = generate_tree(root, html) %>
+               
+               <% words = tree.split(/<\/li>|<li>|<ul>|<\/ul>|,|\\/) %>
+             
+               <% subs = Hash.new %>
+               <% words.each do |word| %>
+                   <% next if word == '' %>
+                   <% page = get_page(word.strip, @story) %>
+                   <% page_title = page.page_title %>
+                   <% subs[word.strip] = link_to(page_title, page) %>
+                   
+               <% end %>
+               <%= tree.gsub!(/[a-zA-z]+[^[<>]]+/) {|link| subs.fetch(link,link)}.html_safe %>
            </ul>
        </ul>
-    
 </div>
 <% end %>
 
