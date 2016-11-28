@@ -18,6 +18,7 @@ class PagesController < ApplicationController
     @page = @story.pages.build(page_params)
     if @page.save
       update_link_with_new_page(@choice, @page) if !@choice.nil?
+      update_page_depth(@page)
       flash[:info] = "You've just submitted a page!" 
       redirect_to add_choices_page_url(@page.id)
     else

@@ -4,6 +4,7 @@
 
 /* universal */
 
+
 body {
     padding-top: 40px;
 }
@@ -29,14 +30,16 @@ h1 {
     
 }
 
-/* navbar */
+
+
+
 
 
 /* logo */
 
 .first {
     float: left;
-    margin-right: 5px;
+    margin-right: 4px;
     font-size: 1.7em;
     color: red;
     padding-top: 9px;
@@ -45,7 +48,7 @@ h1 {
 
 .second {
     float: left;
-    margin-right: 5px;
+    margin-right: 4px;
     font-size: 1.7em;
     color: yellow;
     padding-top: 9px;
@@ -54,7 +57,7 @@ h1 {
 
 .third {
     float: left;
-    margin-right: 5px;
+    margin-right: 4px;
     font-size: 1.7em;
     color: #3366ff;
     padding-top: 9px;
@@ -64,7 +67,7 @@ h1 {
 
 .fourth {
     float: left;
-    margin-right: 5px;
+    margin-right: 4px;
     font-size: 1.7em;
     color: green;
     padding-top: 9px;
@@ -73,7 +76,7 @@ h1 {
 
 .fifth {
     float: left;
-    margin-right: 5px;
+    margin-right: 4px;
     font-size: 1.7em;
     color: red;
     padding-top: 9px;
@@ -82,7 +85,7 @@ h1 {
 
 .sixth {
     float: left;
-    margin-right: 5px;
+    margin-right: 4px;
     font-size: 1.7em;
     color: #3366ff;
     padding-top: 9px;
@@ -91,7 +94,7 @@ h1 {
 
 .seventh {
     float: left;
-    margin-right: 5px;
+    margin-right: 4px;
     font-size: 1.7em;
     color: yellow;
     padding-top: 9px;
@@ -100,7 +103,7 @@ h1 {
 
 .eighth {
  float: left;
-    margin-right: 5px;
+    margin-right: 4px;
     font-size: 1.7em;
     color: red;
     padding-top: 9px;
@@ -109,4 +112,48 @@ h1 {
 
 .navbar-right {
     color: black;
+}
+
+/* page */
+
+.page {
+  width: 4em;
+  float: left;
+  text-align: left;
+  margin-right: 0.5em;
+  display: block
+}
+
+.btn {
+    margin-top: .5em
+}
+
+
+.tree, .tree ul, .tree li {
+     position: relative;
+}
+
+.tree ul {
+    list-style: none;
+    padding-left: 32px;
+}
+
+.tree li::before, .tree li::after {
+    content: "";
+    position: absolute;
+    left: -12px;
+}
+
+.tree li::before {
+    border-top: 1px solid #000;
+    top: 9px;
+    width: 8px;
+    height: 0;
+}
+
+.tree li::after {
+    border-left: 1px solid #000;
+    height: 100%;
+    width: 0px;
+    top: 2px;
 }

@@ -3,16 +3,19 @@ class ChoicesController < ApplicationController
      page = Page.find(params[:page_id])
      new_choice = page.choices.build(choice_params)
     
-     if new_choice.save and page.choices.count == 1
+     if new_choice.save 
          create_link(new_choice) 
-         flash[:info] = "Choice Added!"
-         redirect_to add_choices_page_url(page.id)
-         
-     
-     else 
-        redirect_to page.story
+         if page.choices.count == 1
+           flash[:info] = "Choice Added!"
+           redirect_to add_choices_page_url(page.id)
+         else
+           redirect_to page.story
+         end
      end
   end
+           
+     
+
   
   private
   

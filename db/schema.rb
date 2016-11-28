@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161125235655) do
+ActiveRecord::Schema.define(version: 20161127210757) do
 
   create_table "active_stories", force: :cascade do |t|
     t.integer  "user_id"
@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(version: 20161125235655) do
   create_table "pages", force: :cascade do |t|
     t.text     "content"
     t.integer  "story_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "page_title"
+    t.integer  "depth",      default: 1
   end
 
   add_index "pages", ["story_id"], name: "index_pages_on_story_id"

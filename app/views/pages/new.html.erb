@@ -1,9 +1,15 @@
 <% provide(:title, 'New Page') %>
 
-<h1>Time to write a page! Submit a title for the page, and click submit.</h1>
-
+<h2 class="center">Time to write a page! Submit a title for the page, and click submit.</h2>
+<div class= "row">
+    <% if !@choice.nil? %>
+        <p>Here is the content for the previous page: </p>
+        <p><%= @choice.page.content %></p>
+        <p>You chose: <%= @choice.content %></p>
+    <% end %>
+</div>
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class = "page">
     
     <%= form_for(@page) do |f| %>
           
@@ -11,7 +17,8 @@
         <% unless @choice.nil? %>
             <%= hidden_field_tag :choice_id, @choice.id %>
         <% end %>
-        <%= f.label :page_title %>
+        
+        <%= f.label :title %>
         <%= f.text_field :page_title %>
         
         <%= f.label :content %>

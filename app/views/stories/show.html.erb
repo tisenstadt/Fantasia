@@ -1,12 +1,25 @@
 <% provide(:title, "Pages") %>
-<p>Below you will find all the pages for this story! Click a page to access its content.</p>
+<p>Below you will find all the pages for this story, organized by level! Click a page to access its content.</p>
 
 <% if @story.pages.empty? and user_signed_in? %>
     <%= link_to "Click to create the first page for this story!", new_page_path(:story => @story.id) %>
 <% else %>
-    <ul class="row" >
-        <% @story.pages.each do |page| %>
-            <li><%= link_to page.page_title, page %></li>
-        <% end %>
-    </ul>
+<div class= "tree">
+    <% groups = group_pages_by_depth %>
+    <% groups.sort.each do |group, pages| %>
+       <ul>
+          
+            <% pages.each do |page| %>
+              
+                    <li><%= link_to page.page_title, page %></li>
+               
+            <% end%>
+                
+           
+       </ul>
+    <% end %>
+    
+</div>
 <% end %>
+
+
