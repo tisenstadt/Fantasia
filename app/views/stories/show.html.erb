@@ -4,20 +4,15 @@
 <% if @story.pages.empty? and user_signed_in? %>
     <%= link_to "Click to create the first page for this story!", new_page_path(:story => @story.id) %>
 <% else %>
-<div class= "tree">
-    <% groups = group_pages_by_depth %>
-    <% groups.sort.each do |group, pages| %>
+    <% html = '' %>
+    <% root = @story.pages.first %>
+    <div class= "tree">
        <ul>
-          
-            <% pages.each do |page| %>
-              
-                    <li><%= link_to page.page_title, page %></li>
-               
-            <% end%>
-                
-           
+           <ul>
+               <%= generate_tree(root, html) %>
+         
+           </ul>
        </ul>
-    <% end %>
     
 </div>
 <% end %>

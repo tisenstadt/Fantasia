@@ -13,9 +13,35 @@ module PagesHelper
         group = Page.all.group_by(&:depth)
     end
     
-    def get_depth
-        Page.maximum(:depth)
+    def generate_tree(root, html)
+        html = "<li> #{root.page_title}"
+        children = []
+       
+        root.choices.each do |choice| #i.e. check if children exist for the root node.
+            if !choice.next_page.nil?
+                children << choice
+            end
+        end
+        if children.empty?
+            html << "</li>"
+            return html
+        else 
+            html << "<ul>"
+            children.each do |page|
+                 html << generate_tree(page.next_page, html)
+            end
+            html << "</ul>"
+        end
+        return html.html_safe
+    
     end
+
+   
+        
+        
+         
+            
+            
             
         
 end
