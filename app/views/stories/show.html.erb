@@ -3,7 +3,7 @@
 
 <% if @story.pages.empty? and user_signed_in? %>
     <%= link_to "Click to create the first page for this story!", new_page_path(:story => @story.id) %>
-<% else %>
+<% elsif !@story.pages.first.choices.empty? %>
     <% html = '' %>
     <% root = @story.pages.first %>
     <div class= "tree">
@@ -24,7 +24,10 @@
                <%= tree.gsub!(/[a-zA-z]+[^[<>]]+/) {|link| subs.fetch(link,link)}.html_safe %>
            </ul>
        </ul>
-</div>
+    </div>
+<% elsif @story.pages.first.choices.empty? %>
+    <p>Time to add some choices to the page!</p>
+    <%= link_to @story.pages.first.page_title, @story.pages.first %>
 <% end %>
 
 

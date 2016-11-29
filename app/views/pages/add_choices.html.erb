@@ -1,6 +1,10 @@
   <h3><%= @page.page_title %></h3>
   <p><%= @page.content %></p>
   
+  <% if @page.choices.empty? %>
+    <p>Submit your first choice!</p>
+  <% end %>
+  
   <% if @page.choices.count == 1 %>
       <p>Now submit your second choice!</p>
       <ul>
@@ -10,7 +14,7 @@
       </ul>
   <% end %>
   
-      <p>Submit your first choice!</p>
+     
 
   
   <div class="row">
@@ -25,3 +29,9 @@
             <%= f.submit "Submit my choice!", class: "btn btn-primary" %>
      <% end %>
   </div>
+  
+  
+  
+  
+  <%= link_to "Take me back to the story tree.", @page.story %>
+  

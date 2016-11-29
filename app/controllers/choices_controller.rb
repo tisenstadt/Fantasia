@@ -9,6 +9,7 @@ class ChoicesController < ApplicationController
            flash[:info] = "Choice Added!"
            redirect_to add_choices_page_url(page.id)
          else
+             flash[:info] = "Choice Added!"
            redirect_to page.story
          end
      end

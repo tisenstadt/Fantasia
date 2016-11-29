@@ -19,10 +19,10 @@
         <% end %>
         
         <%= f.label :title %>
-        <%= f.text_field :page_title %>
+        <%= f.text_field  :page_title %>
         
         <%= f.label :content %>
-        <%= f.text_field :content %>
+        <%=f.text_area :content, class: "content"%>
         
         <%= f.submit "Submit my page!", class: "btn btn-primary" %>
     <% end %>

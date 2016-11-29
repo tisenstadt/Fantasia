@@ -1,14 +1,21 @@
 <% provide(:title, @page.page_title) %>
 <h3><%= @page.page_title %></h3>
 <p><%=@page.content %></p>
-<ul>
-<% @page.choices.each do |choice| %>
-    <li>
-        <% if choice.next_page.nil? %>
-            <%= link_to choice.content, new_page_path(:choice => choice.id, :story => choice.page.story_id) %>  
-        <% else %>
-            <%= link_to choice.content,  page_path(choice.next_page) %>
-        <% end %>    
-    </li>   
+
+    
+    <ul>
+    <% @page.choices.each do |choice| %>
+        <li>
+            <% if choice.next_page.nil? %>
+                <%= link_to choice.content, new_page_path(:choice => choice.id, :story => choice.page.story_id) %>  
+            <% else %>
+                <%= link_to choice.content,  page_path(choice.next_page) %>
+            <% end %>    
+        </li>   
+    <% end %>
+    </ul>
+    
+    
+<% if @page.choices.empty? or @page.choices.count < 2 %>
+    <%= link_to "Add more choices!", add_choices_page_url(@page.id) %>
 <% end %>
-</ul>

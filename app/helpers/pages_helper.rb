@@ -14,9 +14,10 @@ module PagesHelper
     end
     
     def generate_tree(root, html)
+        return if root.choices.nil?
         html = "<li> #{root.page_title}"
         children = []
-       
+        
         root.choices.each do |choice| #i.e. check if children exist for the root node.
             if !choice.next_page.nil?
                 children << choice
