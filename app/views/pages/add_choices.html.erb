@@ -1,11 +1,9 @@
-  <h3><%= @page.page_title %></h3>
-  <p><%= @page.content %></p>
+<h3><%= @page.page_title %></h3>
+<p><%= @page.content %></p>
   
   <% if @page.choices.empty? %>
     <p>Submit your first choice!</p>
-  <% end %>
-  
-  <% if @page.choices.count == 1 %>
+  <% else %>
       <p>Now submit your second choice!</p>
       <ul>
           <% @page.choices.each do |choice| %>
@@ -14,13 +12,9 @@
       </ul>
   <% end %>
   
-     
-
-  
   <div class="row">
-      
       <%= form_for(:choice, url: choices_path) do |f| %>
-              
+            <%= render 'shared/error_messsages', object: f.object %>   
             <%= hidden_field_tag :page_id, @page.id %>
             
             <%= f.label :content %>
@@ -29,9 +23,5 @@
             <%= f.submit "Submit my choice!", class: "btn btn-primary" %>
      <% end %>
   </div>
-  
-  
-  
-  
   <%= link_to "Take me back to the story tree.", @page.story %>
   

@@ -1,10 +1,12 @@
 <% provide(:title, "Stories") %>
 <p>Welcome to the stories library! Below you will find all available stories.</p>
-
 <ul class="row" >
     <% @stories.each do |story| %>
         <li><%= link_to story.title, story %></li>
     <% end %>
 </ul>
-
-<%= link_to "Create a New Story!", new_story_path %> 
+<% if user_signed_in? %>
+    <%= link_to "Create a New Story!", new_story_path %> 
+<% else %>
+    <%= link_to "Log in to create a New Story!", new_user_session_path %> 
+<% end %>

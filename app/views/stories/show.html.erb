@@ -1,6 +1,5 @@
 <% provide(:title, "Pages") %>
 <p>Below you will find all the pages for this story, organized by level! Click a page to access its content.</p>
-
 <% if @story.pages.empty? and user_signed_in? %>
     <%= link_to "Click to create the first page for this story!", new_page_path(:story => @story.id) %>
 <% elsif !@story.pages.first.choices.empty? %>
@@ -10,23 +9,20 @@
        <ul>
            <ul>
                <% tree = generate_tree(root, html) %>
-               
                <% words = tree.split(/<\/li>|<li>|<ul>|<\/ul>|,|\\/) %>
-             
                <% subs = Hash.new %>
                <% words.each do |word| %>
                    <% next if word == '' %>
                    <% page = get_page(word.strip, @story) %>
                    <% page_title = page.page_title %>
                    <% subs[word.strip] = link_to(page_title, page) %>
-                   
                <% end %>
                <%= tree.gsub!(/[a-zA-z]+[^[<>]]+/) {|link| subs.fetch(link,link)}.html_safe %>
            </ul>
        </ul>
     </div>
-<% elsif @story.pages.first.choices.empty? %>
-    <p>Time to add some choices to the page!</p>
+<% else %>
+    <p>Time to add some choices to the first page!</p>
     <%= link_to @story.pages.first.page_title, @story.pages.first %>
 <% end %>
 

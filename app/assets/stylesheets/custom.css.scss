@@ -1,6 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* mixins, variables */
+
+
+@mixin logo_format {
+    float: left;
+    margin-right: 4px;
+    font-size: 1.7em;
+    padding-top: 9px;
+    font-weight: bold;
+}
 
 /* universal */
 
@@ -30,84 +40,68 @@ h1 {
     
 }
 
+.jumbotron {
+    color: blue;
+}
 
 
 
+/* footer */
+
+footer {
+    margin-top: 60px;
+    padding-top: 5px;
+    border-top: 1px solid #eaeaea;
+    margin-left: 60px;
+}
+
+footer small {
+    float: left;
+    color: maroon;
+}
 
 
 /* logo */
 
 .first {
-    float: left;
-    margin-right: 4px;
-    font-size: 1.7em;
+    @include logo_format;
     color: red;
-    padding-top: 9px;
-    font-weight: bold;
 }
 
 .second {
-    float: left;
-    margin-right: 4px;
-    font-size: 1.7em;
+    @include logo_format;
     color: yellow;
-    padding-top: 9px;
-    font-weight: bold;
 }
 
 .third {
-    float: left;
-    margin-right: 4px;
-    font-size: 1.7em;
+    @include logo_format;
     color: #3366ff;
-    padding-top: 9px;
-    font-weight: bold;
 }
 
 
 .fourth {
-    float: left;
-    margin-right: 4px;
-    font-size: 1.7em;
+    @include logo_format;
     color: green;
-    padding-top: 9px;
-    font-weight: bold;
 }
 
 .fifth {
-    float: left;
-    margin-right: 4px;
-    font-size: 1.7em;
+    @include logo_format;
     color: red;
-    padding-top: 9px;
- font-weight: bold;
 }
 
 .sixth {
-    float: left;
-    margin-right: 4px;
-    font-size: 1.7em;
+    @include logo_format;
     color: #3366ff;
-    padding-top: 9px;
- font-weight: bold;
 }
 
 .seventh {
-    float: left;
-    margin-right: 4px;
-    font-size: 1.7em;
+    @include logo_format;
     color: yellow;
-    padding-top: 9px;
- font-weight: bold;
 }
 
 .eighth {
- float: left;
-    margin-right: 4px;
-    font-size: 1.7em;
+    @include logo_format;
     color: red;
-    padding-top: 9px;
- font-weight: bold;
 }
 
 .navbar-right {
@@ -159,8 +153,6 @@ h1 {
 }
 
 .content {
- 
     width: 500px;
     height: 380px;
-    
 }

@@ -1,9 +1,4 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  content: MyText
-  story_id: 
-
-two:
-  content: MyText
-  story_id: 
+  story: adventure
+  page_title: morning
+  content: "A refulgent morning."

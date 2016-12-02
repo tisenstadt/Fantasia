@@ -2,7 +2,6 @@ class ChoicesController < ApplicationController
   def create
      page = Page.find(params[:page_id])
      new_choice = page.choices.build(choice_params)
-    
      if new_choice.save 
          create_link(new_choice) 
          if page.choices.count == 1

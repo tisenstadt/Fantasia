@@ -12,7 +12,5 @@ class Choice < ActiveRecord::Base
     def update_link(page)
         my_id = id
         Link.find_by(choice_id: my_id).update_attribute(:page_id, page.id)
-      
-       
     end
 end
