@@ -13,9 +13,6 @@ class ChoicesController < ApplicationController
          end
      end
   end
-           
-     
-
   
   private
   

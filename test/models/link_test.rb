@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class LinkTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @link = Link.new
+  end
+  
+  test "ensure validity" do
+    assert @link.valid?
+  end
 end

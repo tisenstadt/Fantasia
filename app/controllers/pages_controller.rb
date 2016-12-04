@@ -26,7 +26,12 @@ class PagesController < ApplicationController
     end
   end
   
+  def index 
+   
+  end
+  
   def add_choices
+    @choice = Choice.new
     @page = Page.find(params[:id])
   end
   

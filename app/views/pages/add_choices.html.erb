@@ -13,8 +13,8 @@
   <% end %>
   
   <div class="row">
-      <%= form_for(:choice, url: choices_path) do |f| %>
-            <%= render 'shared/error_messsages', object: f.object %>   
+      <%= form_for(@choice) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>  
             <%= hidden_field_tag :page_id, @page.id %>
             
             <%= f.label :content %>

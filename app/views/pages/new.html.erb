@@ -12,7 +12,7 @@
     <div class = "page">
    
     <%= form_for(@page) do |f| %>
-        <%= render 'shared/error_messsages', object: f.object %>  
+         <%= render 'shared/error_messages', object: f.object %>
         <%= hidden_field_tag :story_id, @story.id %>
         <% unless @choice.nil? %>
             <%= hidden_field_tag :choice_id, @choice.id %>
