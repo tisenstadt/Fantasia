@@ -17,6 +17,7 @@
 
 body {
     padding-top: 40px;
+    margin-top: 70px;
 }
 
 textarea {
@@ -155,4 +156,15 @@ footer small {
 .content {
     width: 500px;
     height: 380px;
+}
+
+/* ratings */
+
+.rating {
+ margin-left: 725px;
+ color: blue;
+}
+
+.rate {
+    float: right;
 }

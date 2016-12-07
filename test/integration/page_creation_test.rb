@@ -10,12 +10,8 @@ class PageCreationTest < ActionDispatch::IntegrationTest
   
   test "invalid page submission" do
      sign_in @user
-     get new_story_path
-     assert_difference 'Story.count', 1 do
-          post stories_path, story:  { title: @story.title }
-     end
-     follow_redirect!
-     assert_template 'pages/new'
+     get story_path @story
+     assert_template 'stories/show'
      assert_no_difference 'Page.count' do
        post pages_path, story_id: @story.id, page: { page_title: "mypage", content: nil }
      end
@@ -25,12 +21,8 @@ class PageCreationTest < ActionDispatch::IntegrationTest
   
   test "valid page submission" do
      sign_in @user
-     get new_story_path
-     assert_difference 'Story.count', 1 do
-          post stories_path, story:  { title: "adventure" }
-     end
-     follow_redirect!
-     assert_template 'pages/new'
+     get story_path @story
+     assert_template 'stories/show'
      assert_difference 'Page.count', 1 do
        post pages_path, story_id: @story.id, page: { page_title: "mypage", content: "content" }
      end

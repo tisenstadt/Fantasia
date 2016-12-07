@@ -9,6 +9,7 @@ class PagesController < ApplicationController
   end
   
   def show
+    @rating = Rating.new
     @page = Page.find(params[:id])
   end
   

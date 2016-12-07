@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127210757) do
+ActiveRecord::Schema.define(version: 20161207182951) do
 
   create_table "active_stories", force: :cascade do |t|
     t.integer  "user_id"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(version: 20161127210757) do
   end
 
   add_index "pages", ["story_id"], name: "index_pages_on_story_id"
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "score"
+    t.integer  "user_id"
+    t.integer  "page_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "ratings", ["page_id"], name: "index_ratings_on_page_id"
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "stories", force: :cascade do |t|
     t.integer  "user_id"

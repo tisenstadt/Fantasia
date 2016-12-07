@@ -3,4 +3,5 @@ class ApplicationController < ActionController::Base
   include StoriesHelper
   include PagesHelper
   include ChoicesHelper
+  include RatingsHelper
 end

@@ -1,8 +1,31 @@
 <% provide(:title, @page.page_title) %>
 <h3><%= @page.page_title %></h3>
+ <div class = "rating">
+    <% if !@page.ratings.empty? %>
+        <h4> This page has a current rating of <%= average_rating(@page.ratings) %> 
+        out of 5! </h4>
+    <% else %>
+        <p>This page has not yet been rated.</p>
+    <% end %>
+    </div>
 <p><%=@page.content %></p>
-
-    
+   
+    <div class = "rate" >
+    <% if user_signed_in? and current_user_has_rated?(current_user, @page) %>
+        <p> Thanks for submitting your rating for this page.</p>
+    <% elsif user_signed_in? and !current_user_has_rated?(current_user, @page) %>
+            <%= form_for(@rating) do |f| %>
+              <%= hidden_field_tag :page_id, @page.id %>
+              <p> <%= radio_button_tag :score,  1 %> One </p>
+              <p> <%= radio_button_tag :score, 2 %> Two </p>
+              <p> <%= radio_button_tag  :score, 3 %> Three </p>
+              <p> <%= radio_button_tag :score, 4 %> Four </p>
+              <p> <%= radio_button_tag :score, 5 %> Five </p>
+                <%= f.submit "Submit my rating!", class: "btn btn-primary" %>
+            <% end %>
+      
+    <% end %>
+    </div>
     <ul>
     <% @page.choices.each do |choice| %>
         <li>
@@ -14,8 +37,6 @@
         </li>   
     <% end %>
     </ul>
-    
-    
 <% if @page.choices.empty? or @page.choices.count < 2 %>
     <%= link_to "Add more choices!", add_choices_page_url(@page.id) %>
 <% end %>
